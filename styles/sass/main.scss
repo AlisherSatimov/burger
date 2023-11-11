@@ -76,6 +76,13 @@ body {
 .nav-items {
     display: flex;
     gap: 35px;
+
+    a {
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            color: rgb(167, 118, 101);
+        }
+    }
 }
 
 #hero {

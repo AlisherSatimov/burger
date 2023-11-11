@@ -77,6 +77,12 @@ body {
   display: flex;
   gap: 35px;
 }
+.nav-items a {
+  transition: all 0.3s ease-in-out;
+}
+.nav-items a:hover {
+  color: rgb(167, 118, 101);
+}
 
 #hero {
   display: flex;
