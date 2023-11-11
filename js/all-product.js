@@ -201,120 +201,69 @@ let allProducts = [
     },
 ];
 
-let premiumProducts = allProducts.sort((a, b) => b.price - a.price);
+let searchInput = document.querySelector("#search");
+let allProductContainer = document.querySelector(".products-card");
 
-let newProducts = allProducts.filter(
-    (others) => others.price >= 60 && others.price <= 700
-);
+let searchedProducts = [...allProducts];
 
-let bestsellerProducts = [...allProducts].sort((a, b) => a.price - b.price);
+function displayAllProducts(products) {
+    allProductContainer.innerHTML = "";
 
-for (let i = 0; i < 5; i++) {
-    let preProduct = premiumProducts[i];
-    let preProductContainer = document.querySelector(".pre-products");
+    for (let i = 0; i < products.length; i++) {
+        let product = products[i];
 
-    let productCard = document.createElement("div");
-    productCard.classList.add("pre-product");
+        let productCard = document.createElement("div");
+        productCard.classList.add("product");
 
-    let productImg = document.createElement("img");
-    productImg.setAttribute("src", preProduct.image);
-    productCard.append(productImg);
+        let productImg = document.createElement("img");
+        productImg.setAttribute("src", product.image);
+        productCard.append(productImg);
 
-    let productStatus = document.createElement("div");
-    productStatus.classList.add("product-status");
-    productCard.append(productStatus);
+        let productStatus = document.createElement("div");
+        productStatus.classList.add("product-status");
+        productCard.append(productStatus);
 
-    let starStatus = document.createElement("div");
-    starStatus.classList.add("stars-status");
-    productStatus.append(starStatus);
+        let starStatus = document.createElement("div");
+        starStatus.classList.add("stars-status");
+        productStatus.append(starStatus);
 
-    let starIcon = document.createElement("i");
-    starIcon.classList.add("fa-solid", "fa-star");
-    starStatus.append(starIcon);
+        let starIcon = document.createElement("i");
+        starIcon.classList.add("fa-solid", "fa-star");
+        starStatus.append(starIcon);
 
-    let starCount = document.createElement("span");
-    starCount.classList.add("stars-count");
-    starCount.innerHTML =
-        preProduct.rating.rate + "/" + preProduct.rating.count;
-    starStatus.append(starCount);
+        let starCount = document.createElement("span");
+        starCount.classList.add("stars-count");
+        starCount.innerHTML = product.rating.rate + "/" + product.rating.count;
+        starStatus.append(starCount);
 
-    let productPrice = document.createElement("span");
-    productPrice.classList.add("pre-p-price");
-    productPrice.innerHTML = "$" + preProduct.price;
-    productStatus.append(productPrice);
+        let productPrice = document.createElement("span");
+        productPrice.classList.add("p-price");
+        productPrice.innerHTML = "$" + product.price;
+        productStatus.append(productPrice);
 
-    preProductContainer.append(productCard);
+        allProductContainer.append(productCard);
+    }
 }
 
-for (let i = 0; i < 8; i++) {
-    let newProduct = newProducts[i];
-    let newProductContainer = document.querySelector(".new-products-card");
+displayAllProducts(searchedProducts);
 
-    let productCard = document.createElement("div");
-    productCard.classList.add("new-product");
+searchInput.addEventListener("keyup", function () {
+    let searchKeyword = searchInput.value.toLowerCase().trim();
 
-    let productImg = document.createElement("img");
-    productImg.setAttribute("src", newProduct.image);
-    productCard.append(productImg);
+    if (searchKeyword === "") {
+        displayAllProducts(searchedProducts);
+        return;
+    }
 
-    let productStatus = document.createElement("div");
-    productStatus.classList.add("product-status");
-    productCard.append(productStatus);
+    let filteredProducts = searchedProducts.filter((product) =>
+        product.title.toLowerCase().includes(searchKeyword)
+    );
 
-    let starStatus = document.createElement("div");
-    starStatus.classList.add("stars-status");
-    productStatus.append(starStatus);
+    displayAllProducts(filteredProducts);
+});
 
-    let starIcon = document.createElement("i");
-    starIcon.classList.add("fa-solid", "fa-star");
-    starStatus.append(starIcon);
+searchInput.addEventListener("blur", function () {
+    searchInput.value = "";
 
-    let starCount = document.createElement("span");
-    starCount.classList.add("stars-count");
-    starCount.innerHTML =
-        newProduct.rating.rate + "/" + newProduct.rating.count;
-    starStatus.append(starCount);
-
-    let productPrice = document.createElement("span");
-    productPrice.classList.add("new-p-price");
-    productPrice.innerHTML = "$" + newProduct.price;
-    productStatus.append(productPrice);
-
-    newProductContainer.append(productCard);
-}
-
-for (let i = 0; i < 4; i++) {
-    let bsProduct = bestsellerProducts[i];
-    let bsProductContainer = document.querySelector(".bs-products-card");
-
-    let productCard = document.createElement("div");
-    productCard.classList.add("bs-product");
-
-    let productImg = document.createElement("img");
-    productImg.setAttribute("src", bsProduct.image);
-    productCard.append(productImg);
-
-    let productStatus = document.createElement("div");
-    productStatus.classList.add("product-status");
-    productCard.append(productStatus);
-
-    let starStatus = document.createElement("div");
-    starStatus.classList.add("stars-status");
-    productStatus.append(starStatus);
-
-    let starIcon = document.createElement("i");
-    starIcon.classList.add("fa-solid", "fa-star");
-    starStatus.append(starIcon);
-
-    let starCount = document.createElement("span");
-    starCount.classList.add("stars-count");
-    starCount.innerHTML = bsProduct.rating.rate + "/" + bsProduct.rating.count;
-    starStatus.append(starCount);
-
-    let productPrice = document.createElement("span");
-    productPrice.classList.add("bs-p-price");
-    productPrice.innerHTML = "$" + bsProduct.price;
-    productStatus.append(productPrice);
-
-    bsProductContainer.append(productCard);
-}
+    displayAllProducts(searchedProducts);
+});
