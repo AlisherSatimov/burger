@@ -325,12 +325,18 @@ body {
   .container {
     max-width: 480px;
   }
+  .hero-content h1 {
+    font-size: 46px;
+  }
   #navbar .container {
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 10px;
     font-size: 12px;
+  }
+  .nav-items {
+    gap: 8px;
   }
   #hero {
     padding: 0 20px;
