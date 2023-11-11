@@ -153,7 +153,7 @@ body {
     img {
         padding: 25px;
     }
-    &-1 {
+    &:first-child {
         grid-row: span 2;
     }
 }
@@ -398,7 +398,7 @@ body {
     }
 
     .pre-product {
-        &-1 {
+        &:first-child {
             grid-column: span 2;
         }
     }

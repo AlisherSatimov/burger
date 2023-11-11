@@ -149,7 +149,7 @@ body {
 .pre-product img {
   padding: 25px;
 }
-.pre-product-1 {
+.pre-product:first-child {
   grid-row: span 2;
 }
 
@@ -362,7 +362,7 @@ body {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 250px 250px;
   }
-  .pre-product-1 {
+  .pre-product:first-child {
     grid-column: span 2;
   }
   .product-status {
