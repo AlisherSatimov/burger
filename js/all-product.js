@@ -204,7 +204,7 @@ let allProducts = [
 let searchInput = document.querySelector("#search");
 let allProductContainer = document.querySelector(".products-card");
 
-let searchedProducts = [...allProducts];
+let searchedProducts = allProducts;
 
 function displayAllProducts(products) {
     allProductContainer.innerHTML = "";
