@@ -1,18 +1,10 @@
 let burger = document.querySelector("#burger");
-let cheese = document.createElement("img");
-cheese.setAttribute("src", "/burger-layers/cheese.png");
-let meat = document.createElement("img");
-meat.setAttribute("src", "/burger-layers/meat.png");
-let onion = document.createElement("img");
-onion.setAttribute("src", "/burger-layers/onion.png");
-let pickle = document.createElement("img");
-pickle.setAttribute("src", "/burger-layers/pickle.png");
-let salad = document.createElement("img");
-salad.setAttribute("src", "/burger-layers/salad.png");
-let tomato = document.createElement("img");
-tomato.setAttribute("src", "/burger-layers/tomato.png");
+let costBurger = document.querySelector(".cost");
+let checkBurger = document.querySelector(".check");
+let resetOrder = document.querySelector(".reset");
+let removeItem = document.querySelector(".ingrediant");
 
-let ingredientsImg = document.querySelector(".ingredients-img");
+let ingredientsImg = document.querySelector(".ingrediants-img");
 
 let cheeseBtn = document.querySelector(".cheese");
 let meatBtn = document.querySelector(".meat");
@@ -21,28 +13,74 @@ let pickleBtn = document.querySelector(".pickle");
 let saladBtn = document.querySelector(".salad");
 let tomatoBtn = document.querySelector(".tomato");
 
-let ingrePosition = 1;
+let cost = 2;
+let checkNumber = 10;
 
 cheeseBtn.addEventListener("click", (e) => {
-    ingredientsImg.innerHTML += '<img src="burger-layers/cheese.png">';
+    ingredientsImg.innerHTML +=
+        '<img src="burger-layers/cheese.png" class="ingrediant">';
+    cost += 2;
+    costBurger.innerHTML = cost;
 });
 
 meatBtn.addEventListener("click", (e) => {
-    ingredientsImg.innerHTML += '<img src="burger-layers/meat.png">';
+    ingredientsImg.innerHTML +=
+        '<img src="burger-layers/meat.png" class="ingrediant">';
+    cost += 5;
+    costBurger.innerHTML = cost;
 });
 
 onionBtn.addEventListener("click", (e) => {
-    ingredientsImg.innerHTML += '<img src="burger-layers/onion.png">';
+    ingredientsImg.innerHTML +=
+        '<img src="burger-layers/onion.png" class="ingrediant">';
+    cost += 1;
+    costBurger.innerHTML = cost;
 });
 
 pickleBtn.addEventListener("click", (e) => {
-    ingredientsImg.innerHTML += '<img src="burger-layers/pickle.png">';
+    ingredientsImg.innerHTML +=
+        '<img src="burger-layers/pickle.png" class="ingrediant">';
+    cost += 3;
+    costBurger.innerHTML = cost;
 });
 
 saladBtn.addEventListener("click", (e) => {
-    ingredientsImg.innerHTML += '<img src="burger-layers/salad.png">';
+    ingredientsImg.innerHTML +=
+        '<img src="burger-layers/salad.png" class="ingrediant">';
+    cost += 1;
+    costBurger.innerHTML = cost;
 });
 
 tomatoBtn.addEventListener("click", (e) => {
-    ingredientsImg.innerHTML += '<img src="burger-layers/tomato.png">';
+    ingredientsImg.innerHTML +=
+        '<img src="burger-layers/tomato.png" class="ingrediant">';
+    cost += 2;
+    costBurger.innerHTML = cost;
+});
+
+checkBurger.addEventListener("click", (e) => {
+    checkNumber += 1;
+    alert(
+        "Buyurtmangizning narxi jami $" +
+            cost +
+            " bo'ldi. \n" +
+            "Sizning navbar raqamingiz: " +
+            checkNumber +
+            "\nYoqimli Ishtaxa"
+    );
+    ingredientsImg.innerHTML = "";
+    cost = 1;
+    costBurger.innerHTML = cost;
+});
+
+resetOrder.addEventListener("click", (e) => {
+    ingredientsImg.innerHTML = "";
+    cost = 1;
+    costBurger.innerHTML = cost;
+});
+
+removeItem.addEventListener("dblclick", (e) => {
+    removeItem.classList.add("dn");
+    cost -= 2;
+    costBurger.innerHTML = cost;
 });

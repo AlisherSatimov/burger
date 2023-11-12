@@ -14,23 +14,44 @@
         <title>Burger</title>
     </head>
     <body>
-        <div id="burger" class="burger">
-            <img class="top-bread" src="burger-layers/top-bread.png" alt="" />
-            <div class="ingredients-img"></div>
-            <img
-                class="bottom-bread"
-                src="burger-layers/bottom-bread.png"
-                alt=""
-            />
+        <div class="burger-container">
+            <div id="burger" class="burger">
+                <img
+                    class="top-bread"
+                    src="burger-layers/top-bread.png"
+                    alt=""
+                />
+                <div class="ingrediants-img"></div>
+                <img
+                    class="bottom-bread"
+                    src="burger-layers/bottom-bread.png"
+                    alt=""
+                />
+            </div>
+            <div id="ingrediants">
+                <p>Non - 2$</p>
+                <button type="button" class="cheese">Pishloq - 2$</button>
+                <button type="button" class="meat">Go'sht - 5$</button>
+                <button type="button" class="onion">Piyoz - 1$</button>
+                <button type="button" class="pickle">
+                    Tuzlangan Bodring - 3$
+                </button>
+                <button type="button" class="salad">Salat - 1$</button>
+                <button type="button" class="tomato">Pamidor - 2$</button>
+
+                <div class="costBurger">
+                    Umumiy Narxi: $
+                    <span class="cost">2</span>
+                </div>
+                <div class="check-burger">
+                    <button class="check">Buyurtma berish</button>
+                </div>
+                <div class="reset-order">
+                    <button class="reset">Bekor qilish</button>
+                </div>
+            </div>
         </div>
-        <div id="ingredients">
-            <button type="button" class="cheese">Pishloq</button>
-            <button type="button" class="meat">Go'sht</button>
-            <button type="button" class="onion">Piyoz</button>
-            <button type="button" class="pickle">Tuzlangan Bodring</button>
-            <button type="button" class="salad">Salat</button>
-            <button type="button" class="tomato">Pamidor</button>
-        </div>
+
         <script src="js/burger.js"></script>
     </body>
 </html>
