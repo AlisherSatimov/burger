@@ -94,7 +94,7 @@
 }
 @media (max-width: 700px) {
   .burger-container {
-    width: 400px;
+    width: 100%;
     gap: 20px;
   }
   #burger img {
